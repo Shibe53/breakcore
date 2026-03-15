@@ -15,6 +15,10 @@ run/main_scene="uid://3jwwkqsrbtn6"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+player=""
+
 [input]
 
 p1_move_left={
