@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://1cqb51r3rqik"]
+
+[ext_resource type="Texture2D" uid="uid://dhy1m2b0sskmu" path="res://keeper orgasm.png" id="1_5mj4t"]
+[ext_resource type="Script" uid="uid://c7v8m4dsedogj" path="res://Characters/player.gd" id="1_eovys"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eovys"]
+radius = 14.0
+height = 54.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_eovys")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.7683716e-07, 0)
+scale = Vector2(0.5284091, 0.9240507)
+texture = ExtResource("1_5mj4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_eovys")
