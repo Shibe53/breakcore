@@ -1,35 +1,64 @@
-[gd_scene format=3 uid="uid://1cqb51r3rqik"]
+[gd_scene load_steps=9 format=3 uid="uid://1cqb51r3rqik"]
 
 [ext_resource type="Texture2D" uid="uid://dhy1m2b0sskmu" path="res://keeper orgasm.png" id="1_5mj4t"]
 [ext_resource type="Script" uid="uid://c7v8m4dsedogj" path="res://Player/player.gd" id="1_eovys"]
 [ext_resource type="PackedScene" uid="uid://f7p5vykto775" path="res://Utils/hurtbox.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://cvr2iaky0pab2" path="res://Utils/soft_collision.tscn" id="4_gwnis"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btcbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5mj4t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eovys"]
 radius = 14.0
 height = 54.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
-radius = 18.0
-height = 56.0
+radius = 12.0
+height = 50.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1741035345 groups=["player"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k53q1"]
+radius = 16.0
+height = 58.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_eovys")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1342167616]
-position = Vector2(4.7683716e-07, 0)
-scale = Vector2(0.5284091, 0.9240507)
-texture = ExtResource("1_5mj4t")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5454545, 0.7310126)
+sprite_frames = SubResource("SpriteFrames_btcbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1733952338]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_eovys")
 
-[node name="Hurtbox" parent="." unique_id=793153035 instance=ExtResource("3_btcbx")]
+[node name="Hurtbox" parent="." instance=ExtResource("3_btcbx")]
+collision_layer = 4
+collision_mask = 8
 
 [node name="CollisionShape" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_btcbx")
+
+[node name="SoftCollision" parent="." instance=ExtResource("4_gwnis")]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape" parent="SoftCollision" index="0"]
+shape = SubResource("CapsuleShape2D_k53q1")
+
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 
 [editable path="Hurtbox"]
+[editable path="SoftCollision"]
