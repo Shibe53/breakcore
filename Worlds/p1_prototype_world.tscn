@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://t3ynv6ighfep"]
+[gd_scene format=3 uid="uid://t3ynv6ighfep"]
 
 [ext_resource type="PackedScene" uid="uid://b85uwpyfx4ffy" path="res://Environment/wall.tscn" id="1_ob0vl"]
 [ext_resource type="PackedScene" uid="uid://1cqb51r3rqik" path="res://Player/player.tscn" id="2_wt2hc"]
@@ -11,23 +11,23 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(13, -5, 1184, -6, 1158, 667, -2, 658)])
 agent_radius = 30.0
 
-[node name="P1PrototypeWorld" type="Node2D"]
+[node name="P1PrototypeWorld" type="Node2D" unique_id=469761933]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1105440925]
 navigation_polygon = SubResource("NavigationPolygon_wbr24")
 
-[node name="Wall" parent="NavigationRegion2D" instance=ExtResource("1_ob0vl")]
+[node name="Wall" parent="NavigationRegion2D" unique_id=1066872061 instance=ExtResource("1_ob0vl")]
 position = Vector2(971, 483)
 
-[node name="Wall2" parent="NavigationRegion2D" instance=ExtResource("1_ob0vl")]
+[node name="Wall2" parent="NavigationRegion2D" unique_id=1456237040 instance=ExtResource("1_ob0vl")]
 position = Vector2(172, 186)
 
-[node name="Player1" parent="." instance=ExtResource("2_wt2hc")]
+[node name="Player1" parent="." unique_id=1232445620 instance=ExtResource("2_wt2hc")]
 position = Vector2(628, 252)
 controls = ExtResource("3_0y6st")
 
-[node name="SmallEnemy" parent="." instance=ExtResource("4_wbr24")]
+[node name="SmallEnemy" parent="." unique_id=395616885 instance=ExtResource("4_wbr24")]
 position = Vector2(361, 320)
 
-[node name="SmallEnemy2" parent="." instance=ExtResource("4_wbr24")]
+[node name="SmallEnemy2" parent="." unique_id=993053256 instance=ExtResource("4_wbr24")]
 position = Vector2(966, 310)

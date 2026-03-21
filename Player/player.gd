@@ -7,6 +7,7 @@ class_name Player
 @export var MAX_SPEED = 200
 @export var FRICTION = 500
 @export var controls : Resource = null
+@export_range(1,2) var player_num : int = 1
 
 enum {
 	MOVE
@@ -16,7 +17,7 @@ var stats = PlayerStats
 var state = MOVE
 
 func _ready():
-	pass
+	$AnimatedSprite2D.animation = "red" if player_num == 1 else "blue"
 
 func _physics_process(delta):
 	match state:
