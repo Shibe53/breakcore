@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://f7p5vykto775"]
+[gd_scene format=3 uid="uid://f7p5vykto775"]
 
 [ext_resource type="Script" uid="uid://dbvld6y6rgrba" path="res://Utils/hurtbox.gd" id="1_in1wh"]
 
-[node name="Hurtbox" type="Area2D"]
+[node name="Hurtbox" type="Area2D" unique_id=77752459]
 script = ExtResource("1_in1wh")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1036075985]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=487164216]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

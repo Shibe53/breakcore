@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cgphtk16kxx54"]
+
+[ext_resource type="Script" uid="uid://dg2tq24lw0son" path="res://Enemies/enemy.gd" id="1_gr8wy"]
+[ext_resource type="PackedScene" uid="uid://yypn5u40rwus" path="res://Utils/hitbox.tscn" id="2_8kec2"]
+[ext_resource type="Texture2D" uid="uid://cxwvo1f4mtgbt" path="res://Assets/Sprites/bug-export.png" id="2_xueau"]
+[ext_resource type="PackedScene" uid="uid://f7p5vykto775" path="res://Utils/hurtbox.tscn" id="3_xueau"]
+[ext_resource type="PackedScene" uid="uid://csy3yjjj5ike0" path="res://Utils/stats.tscn" id="4_618kb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_618kb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xueau")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kec2"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xueau"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_618kb"]
+radius = 12.0
+
+[node name="NormalEnemy" type="CharacterBody2D" unique_id=1836841049]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_gr8wy")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=723882136]
+avoidance_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=314208087]
+rotation = 1.5707964
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_618kb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1182401983]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_8kec2")
+
+[node name="Hitbox" parent="." unique_id=1925690377 instance=ExtResource("2_8kec2")]
+position = Vector2(0, 10)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape" parent="Hitbox" index="0"]
+position = Vector2(0, -10)
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_xueau")
+
+[node name="Hurtbox" parent="." unique_id=719446465 instance=ExtResource("3_xueau")]
+visible = false
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape" parent="Hurtbox" index="0" unique_id=1036075985]
+visible = false
+shape = SubResource("CircleShape2D_618kb")
+
+[node name="Stats" parent="." unique_id=1885939063 instance=ExtResource("4_618kb")]
+max_health = 8
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_hurtbox_area_exited"]
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+
+[editable path="Hitbox"]
+[editable path="Hurtbox"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://1cqb51r3rqik"]
+[gd_scene format=3 uid="uid://1cqb51r3rqik"]
 
-[ext_resource type="Texture2D" uid="uid://dhy1m2b0sskmu" path="res://keeper orgasm.png" id="1_5mj4t"]
+[ext_resource type="Texture2D" uid="uid://dhy1m2b0sskmu" path="res://Assets/Sprites/keeper orgasm.png" id="1_5mj4t"]
 [ext_resource type="Script" uid="uid://c7v8m4dsedogj" path="res://Player/player.gd" id="1_eovys"]
 [ext_resource type="PackedScene" uid="uid://f7p5vykto775" path="res://Utils/hurtbox.tscn" id="3_btcbx"]
-[ext_resource type="PackedScene" uid="uid://cvr2iaky0pab2" path="res://Utils/soft_collision.tscn" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://bmmwxsxfrdv7q" path="res://Player/light.tscn" id="3_gwnis"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btcbx"]
 animations = [{
@@ -20,45 +20,56 @@ animations = [{
 radius = 14.0
 height = 54.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwnis"]
+radius = 145.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
-radius = 12.0
-height = 50.0
+radius = 15.0
+height = 56.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k53q1"]
-radius = 16.0
-height = 58.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_k53q1"]
+radius = 232.55107
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=367369876 groups=["player"]]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_eovys")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1043712435]
 scale = Vector2(0.5454545, 0.7310126)
 sprite_frames = SubResource("SpriteFrames_btcbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1672889199]
+visible = false
 shape = SubResource("CapsuleShape2D_eovys")
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_btcbx")]
+[node name="Light" parent="." unique_id=406137903 instance=ExtResource("3_gwnis")]
+
+[node name="CollisionShape" parent="Light/Hitbox" parent_id_path=PackedInt32Array(406137903, 236865144) index="0"]
+shape = SubResource("CircleShape2D_gwnis")
+
+[node name="Hurtbox" parent="." unique_id=1116807572 instance=ExtResource("3_btcbx")]
+visible = false
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape" parent="Hurtbox" index="0"]
+[node name="CollisionShape" parent="Hurtbox" index="0" unique_id=1036075985]
 shape = SubResource("CapsuleShape2D_btcbx")
 
-[node name="SoftCollision" parent="." instance=ExtResource("4_gwnis")]
-collision_layer = 32
-collision_mask = 32
+[node name="Push" type="Area2D" parent="." unique_id=566448013]
+visible = false
+collision_layer = 0
+collision_mask = 8
 
-[node name="CollisionShape" parent="SoftCollision" index="0"]
-shape = SubResource("CapsuleShape2D_k53q1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Push" unique_id=1145507122]
+shape = SubResource("CircleShape2D_k53q1")
 
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="." unique_id=330294054]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 
+[editable path="Light"]
+[editable path="Light/Hitbox"]
 [editable path="Hurtbox"]
-[editable path="SoftCollision"]

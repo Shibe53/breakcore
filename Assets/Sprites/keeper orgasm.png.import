@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhy1m2b0sskmu"
-path="res://.godot/imported/keeper orgasm.png-9811c17c633ecc2a2d006187f476aaac.ctex"
+path="res://.godot/imported/keeper orgasm.png-6d75648be22d00fad4a1da37f8554cb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://keeper orgasm.png"
-dest_files=["res://.godot/imported/keeper orgasm.png-9811c17c633ecc2a2d006187f476aaac.ctex"]
+source_file="res://Assets/Sprites/keeper orgasm.png"
+dest_files=["res://.godot/imported/keeper orgasm.png-6d75648be22d00fad4a1da37f8554cb9.ctex"]
 
 [params]
 

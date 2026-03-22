@@ -7,8 +7,6 @@ signal invincibility_ended
 @onready var timer = $Timer
 @onready var collisionShape = $CollisionShape
 
-var guard = false
-
 var invincible = false:
 	set(value):
 		invincible = value

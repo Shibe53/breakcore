@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var hurtbox = $Hurtbox
+@onready var push = $Push
 
 @export var ACCELERATION = 800
 @export var MAX_SPEED = 200
@@ -16,7 +17,7 @@ var stats = PlayerStats
 var state = MOVE
 
 func _ready():
-	pass
+	stats.no_health.connect(player_death)
 
 func _physics_process(delta):
 	match state:
@@ -39,12 +40,22 @@ func move_state(delta):
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if not hurtbox.invincible:
 		stats.health -= area.damage
-		var knockback_direction = area.owner.position.direction_to(position)
-		velocity = knockback_direction * 200
-		hurtbox.start_invincibility(0.6)
+		hurtbox.start_invincibility(2.0)
+		push_away()
+
+func push_away():
+	var bodies = push.get_overlapping_bodies()
+	for body in bodies:
+		if body is CharacterBody2D:
+			var dir = (body.global_position - push.global_position).normalized()
+			body.velocity += dir * 3000
 
 func _on_hurtbox_invincibility_ended() -> void:
 	pass
 
 func _on_hurtbox_invincibility_started() -> void:
 	pass
+
+func player_death():
+	self.set_collision_layer_value(2, false)
+	queue_free()

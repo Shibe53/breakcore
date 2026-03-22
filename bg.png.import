@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k8ndcdclyott"
-path="res://.godot/imported/niko.jpg-4865d1b866868468ac5d8879a51db3cc.ctex"
+uid="uid://bsu1l8x1obxs1"
+path="res://.godot/imported/bg.png-24bff804693ee063127ad100e04c5185.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://niko.jpg"
-dest_files=["res://.godot/imported/niko.jpg-4865d1b866868468ac5d8879a51db3cc.ctex"]
+source_file="res://bg.png"
+dest_files=["res://.godot/imported/bg.png-24bff804693ee063127ad100e04c5185.ctex"]
 
 [params]
 

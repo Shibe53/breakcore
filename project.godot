@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="breakcore"
 run/main_scene="uid://3jwwkqsrbtn6"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Sprites/icon.svg"
 
 [autoload]
 
@@ -79,7 +79,8 @@ p2_move_down={
 2d_physics/layer_3="Player Hurtbox"
 2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Enemy Hurtbox"
-2d_physics/layer_6="Soft Collisions"
+2d_physics/layer_6="Light Hitbox"
+2d_physics/layer_16="Soft Collision"
 
 [rendering]
 
