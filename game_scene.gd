@@ -21,21 +21,21 @@ func _ready() -> void:
 		info.player.add_child(info.remote_transform)
 	
 func _input(event) -> void:
-	if event.is_action_pressed("switch"):
-		var p1 = players[0].player
-		var p2 = players[1].player
-		
-		var p1_pos = p1.position
-		var p1_world = p1.get_parent()
-		var p1_remote_tf_path = players[0].remote_transform.remote_path
-		
-		p1.position = p2.position
-		players[0].remote_transform.remote_path = players[1].remote_transform.remote_path
-		p1.reparent(p2.get_parent())
-		
-		p2.position = p1_pos
-		players[1].remote_transform.remote_path = p1_remote_tf_path
-		p2.reparent(p1_world)
+	if event.is_action_pressed("switch"): # TODO replace this with an actual signal from somewhere
+		_on_switch_signal()
 		
 func _on_switch_signal():
-	pass
+	var p1 = players[0].player
+	var p2 = players[1].player
+	
+	var p1_pos = p1.position
+	var p1_world = p1.get_parent()
+	var p1_remote_tf_path = players[0].remote_transform.remote_path
+	
+	p1.position = p2.position
+	players[0].remote_transform.remote_path = players[1].remote_transform.remote_path
+	p1.reparent(p2.get_parent())
+	
+	p2.position = p1_pos
+	players[1].remote_transform.remote_path = p1_remote_tf_path
+	p2.reparent(p1_world)
