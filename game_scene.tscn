@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://t3ynv6ighfep" path="res://Worlds/p1_prototype_world.tscn" id="1_mlf6e"]
 [ext_resource type="Script" uid="uid://cjmmcbmoc54ng" path="res://game_scene.gd" id="1_v1wow"]
+[ext_resource type="PackedScene" uid="uid://dltkwbtmm2vvu" path="res://Utils/the_switcherrr.tscn" id="2_mixcd"]
 [ext_resource type="PackedScene" uid="uid://c2c4i4s1udd6h" path="res://Worlds/p2_prototype_world.tscn" id="2_po0ka"]
 
 [node name="GameScene" type="Control" unique_id=1299157266]
@@ -12,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v1wow")
+
+[node name="The Switcherrr" parent="." unique_id=1709131264 instance=ExtResource("2_mixcd")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1375311485]
 layout_mode = 1
@@ -60,3 +63,5 @@ position = Vector2(-8, 0)
 
 [node name="P2World" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=1072805428 instance=ExtResource("2_po0ka")]
 unique_name_in_owner = true
+
+[connection signal="switch_success" from="The Switcherrr" to="." method="_on_switch_signal"]

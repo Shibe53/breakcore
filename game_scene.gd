@@ -19,10 +19,6 @@ func _ready() -> void:
 	for info in players:
 		info.remote_transform.remote_path = info.camera.get_path()
 		info.player.add_child(info.remote_transform)
-	
-func _input(event) -> void:
-	if event.is_action_pressed("switch"): # TODO replace this with an actual signal from somewhere
-		_on_switch_signal()
 		
 func _on_switch_signal():
 	var p1 = players[0].player

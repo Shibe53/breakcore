@@ -3,13 +3,14 @@ class_name QTE
 #USAGE: SET THE RECIPIE THROUGH THE EXPORTED VARIABLE. KEY_ESCAPE WILL BE RANODMIZED ON THE CORRESPONDING PLAYER'S 
 
 @export var recipie: Array[Key]
-@export var player_num: int
+@export_range(1,2) var player_num: int
+
+var active_recipie: Array[Key]
 var active = false
 var current_index = 0
 
 signal success(qte: QTE)
 signal successful_key(qte: QTE, key: Key)
-signal failed(qte: QTE)
 
 # I would have preferred to have a 3x5 square of keys for each player
 # but for p2 this would have meant having special characters and those
@@ -28,26 +29,39 @@ const P2_KEYS = [
 func _ready() -> void:
 	on_activate()
 
-func randomise_keys():
+func randomise_keys() -> Array[Key]:
+	var new_arr = recipie.duplicate(true)
 	for i in range(recipie.size()):
 		if recipie[i] != KEY_ESCAPE: continue
 		if player_num == 1:
-			recipie[i] = P1_KEYS.pick_random()
+			new_arr[i] = P1_KEYS.pick_random()
 		else:
-			recipie[i] = P2_KEYS.pick_random()
+			new_arr[i] = P2_KEYS.pick_random()
+	return new_arr
 
 func _input(event: InputEvent) -> void:
 	#if not active: return
 	
 	if event is InputEventKey and event.is_pressed():
-		if event.keycode == recipie[current_index]:
-			successful_key.emit(self, recipie[current_index])
+		if event.keycode == active_recipie[current_index]:
+			successful_key.emit(self, active_recipie[current_index])
 			current_index += 1
-			if current_index >= recipie.size():
-				active = false
+			if current_index >= active_recipie.size():
 				success.emit(self)
+				deactivate()
+	
+func recipie_to_string(arr_of_keys: Array[Key]) -> Array:
+	var arr = []
+	for key in arr_of_keys:
+		arr.append(OS.get_keycode_string(key))
+	return arr
+	
+func deactivate():
+	active = false
+	current_index = 0
 	
 func on_activate():
 	active = true
-	randomise_keys()
+	active_recipie = randomise_keys()
+	print("press the keys: {array}".format({"array" : recipie_to_string(active_recipie)}))
 	
