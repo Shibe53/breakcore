@@ -4,6 +4,16 @@
 [ext_resource type="Script" uid="uid://cjmmcbmoc54ng" path="res://game_scene.gd" id="1_v1wow"]
 [ext_resource type="PackedScene" uid="uid://dltkwbtmm2vvu" path="res://Utils/the_switcherrr.tscn" id="2_mixcd"]
 [ext_resource type="PackedScene" uid="uid://c2c4i4s1udd6h" path="res://Worlds/p2_prototype_world.tscn" id="2_po0ka"]
+[ext_resource type="Script" uid="uid://da1qn4ohm2cvo" path="res://shmove-the-filter.gd" id="4_mj2jn"]
+[ext_resource type="Shader" uid="uid://dkvlkw0sp02pu" path="res://Assets/Shaders/king-crimson.gdshader" id="5_kdryc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6e45b"]
+shader = ExtResource("5_kdryc")
+shader_parameter/sweepWidth = 0.0
+shader_parameter/sweepTime = 0.0
+shader_parameter/redTime = 0.0
+shader_parameter/tearIntensity = 0.18
+shader_parameter/tearFrequency = 0.33
 
 [node name="GameScene" type="Control"]
 layout_mode = 3
@@ -65,3 +75,25 @@ position = Vector2(-8, 0)
 unique_name_in_owner = true
 
 [connection signal="switch_success" from="The Switcherrr" to="." method="_on_switch_signal"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -101.0
+offset_right = -3.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_mj2jn")
+SPEED = 8000
+
+[node name="ShaderRect" type="ColorRect" parent="ColorRect"]
+material = SubResource("ShaderMaterial_6e45b")
+layout_mode = 0
+offset_left = -4200.0
+offset_top = -19.0
+offset_bottom = 678.0
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = -4300.0
+offset_right = -4200.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
