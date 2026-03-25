@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name Player
 
 @onready var hurtbox = $Hurtbox
 @onready var push = $Push
