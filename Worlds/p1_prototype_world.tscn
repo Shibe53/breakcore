@@ -12,25 +12,30 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(13, -5, 1184, -6, 1158, 667, -2, 658)])
 agent_radius = 30.0
 
-[node name="P1PrototypeWorld" type="Node2D" unique_id=1486952973]
+[node name="P1PrototypeWorld" type="Node2D" unique_id=1614988977]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1432273505]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=553784829]
 position = Vector2(671.00006, 373)
 scale = Vector2(5.5633335, 7.075)
 texture = ExtResource("1_srx6f")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=515616735]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1562333166]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_wbr24")
 
-[node name="Wall" parent="NavigationRegion2D" unique_id=95332547 instance=ExtResource("1_ob0vl")]
+[node name="Wall" parent="NavigationRegion2D" unique_id=1438444192 instance=ExtResource("1_ob0vl")]
 position = Vector2(971, 483)
 
-[node name="Wall2" parent="NavigationRegion2D" unique_id=162126635 instance=ExtResource("1_ob0vl")]
+[node name="Wall2" parent="NavigationRegion2D" unique_id=847275707 instance=ExtResource("1_ob0vl")]
 position = Vector2(172, 186)
 
-[node name="Player1" parent="." unique_id=1190850806 instance=ExtResource("2_wt2hc")]
+[node name="Player1" parent="." unique_id=2126001402 instance=ExtResource("2_wt2hc")]
 position = Vector2(628, 252)
 controls = ExtResource("3_0y6st")
 
-[node name="EnemySpawner" parent="." unique_id=755616621 instance=ExtResource("4_wbr24")]
+[node name="EnemySpawner" parent="." unique_id=340988123 instance=ExtResource("4_wbr24")]
+
+[node name="Timer" parent="EnemySpawner" index="0" unique_id=518227946]
+wait_time = 1.5
+
+[editable path="EnemySpawner"]

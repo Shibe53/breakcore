@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var MAX_SPEED = 200
 @export var FRICTION = 500
 @export var controls : Resource = null
+@export_range(1,2) var player_num : int = 1
 
 enum {
 	MOVE
@@ -17,6 +18,7 @@ var state = MOVE
 
 func _ready():
 	stats.no_health.connect(player_death)
+	$AnimatedSprite2D.animation = "red" if player_num == 1 else "blue"
 
 func _physics_process(delta):
 	match state:

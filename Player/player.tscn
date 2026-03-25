@@ -2,17 +2,35 @@
 
 [ext_resource type="Texture2D" uid="uid://dhy1m2b0sskmu" path="res://Assets/Sprites/keeper orgasm.png" id="1_5mj4t"]
 [ext_resource type="Script" uid="uid://c7v8m4dsedogj" path="res://Player/player.gd" id="1_eovys"]
+[ext_resource type="Texture2D" uid="uid://d01qf17xhlji8" path="res://keeper orgasm blue.png" id="2_fhl08"]
 [ext_resource type="PackedScene" uid="uid://f7p5vykto775" path="res://Utils/hurtbox.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://bmmwxsxfrdv7q" path="res://Player/light.tscn" id="3_gwnis"]
+[ext_resource type="Texture2D" uid="uid://btjiwdraqqvuh" path="res://keeper orgasm red.png" id="4_vtle1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btcbx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fhl08")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_5mj4t")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vtle1")
+}],
+"loop": true,
+"name": &"red",
 "speed": 5.0
 }]
 
@@ -30,25 +48,26 @@ height = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_k53q1"]
 radius = 232.55107
 
-[node name="Player" type="CharacterBody2D" unique_id=367369876 groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_eovys")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1043712435]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5454545, 0.7310126)
 sprite_frames = SubResource("SpriteFrames_btcbx")
+autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1672889199]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CapsuleShape2D_eovys")
 
-[node name="Light" parent="." unique_id=406137903 instance=ExtResource("3_gwnis")]
+[node name="Light" parent="." instance=ExtResource("3_gwnis")]
 
 [node name="CollisionShape" parent="Light/Hitbox" parent_id_path=PackedInt32Array(406137903, 236865144) index="0"]
 shape = SubResource("CircleShape2D_gwnis")
 
-[node name="Hurtbox" parent="." unique_id=1116807572 instance=ExtResource("3_btcbx")]
+[node name="Hurtbox" parent="." instance=ExtResource("3_btcbx")]
 visible = false
 collision_layer = 4
 collision_mask = 8
@@ -56,7 +75,7 @@ collision_mask = 8
 [node name="CollisionShape" parent="Hurtbox" index="0" unique_id=1036075985]
 shape = SubResource("CapsuleShape2D_btcbx")
 
-[node name="Push" type="Area2D" parent="." unique_id=566448013]
+[node name="Push" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 collision_mask = 8
@@ -64,7 +83,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Push" unique_id=1145507122]
 shape = SubResource("CircleShape2D_k53q1")
 
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="." unique_id=330294054]
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
