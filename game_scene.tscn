@@ -9,11 +9,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6e45b"]
 shader = ExtResource("5_kdryc")
-shader_parameter/sweepWidth = 0.0
-shader_parameter/sweepTime = 0.0
-shader_parameter/redTime = 0.0
 shader_parameter/tearIntensity = 0.18
 shader_parameter/tearFrequency = 0.33
+shader_parameter/bandWidth = 0.067
 
 [node name="GameScene" type="Control" unique_id=1194877139]
 layout_mode = 3
@@ -96,5 +94,7 @@ offset_left = -4300.0
 offset_right = -4200.0
 offset_bottom = 650.0
 color = Color(0, 0, 0, 1)
+
+[connection signal="switch_success" from="The Switcherrr" to="." method="_on_switch_signal"]
 
 [connection signal="switch_success" from="The Switcherrr" to="." method="_on_switch_signal"]
