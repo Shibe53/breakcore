@@ -35,4 +35,4 @@ func spawn_enemy():
 		enemy = bigger_enemy
 
 	enemy.global_position = spawn_pos
-	add_child(enemy)
+	get_parent().add_child(enemy)

@@ -3,16 +3,52 @@
 [ext_resource type="PackedScene" uid="uid://b85uwpyfx4ffy" path="res://Environment/wall.tscn" id="1_yi0ob"]
 [ext_resource type="PackedScene" uid="uid://1cqb51r3rqik" path="res://Player/player.tscn" id="2_0iw4j"]
 [ext_resource type="Resource" uid="uid://hjlyv6ud36vh" path="res://Player/p2_controls.tres" id="3_5o22e"]
+[ext_resource type="PackedScene" uid="uid://cte1jbj5gjb40" path="res://Enemies/enemy_spawner.tscn" id="4_ofpeo"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5o22e"]
+vertices = PackedVector2Array(1148.3828, 656.9219, 8.21875, 648.0703, 22.773438, 4.9921875, 1173.6016, 4)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(13, -5, 1184, -6, 1158, 667, -2, 658)])
+agent_radius = 30.0
 
 [node name="P2PrototypeWorld" type="Node2D" unique_id=892028561]
 
-[node name="Wall" parent="." unique_id=1235132575 instance=ExtResource("1_yi0ob")]
-position = Vector2(595, 447)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1624848097]
+navigation_polygon = SubResource("NavigationPolygon_5o22e")
 
-[node name="Wall2" parent="." unique_id=532706683 instance=ExtResource("1_yi0ob")]
-position = Vector2(616, 195)
+[node name="Wall" parent="NavigationRegion2D" unique_id=565424738 instance=ExtResource("1_yi0ob")]
+position = Vector2(447, 566)
+
+[node name="Wall8" parent="NavigationRegion2D" unique_id=725683404 instance=ExtResource("1_yi0ob")]
+position = Vector2(737, 471)
+
+[node name="Wall9" parent="NavigationRegion2D" unique_id=2041661087 instance=ExtResource("1_yi0ob")]
+position = Vector2(412, 73)
+
+[node name="Wall10" parent="NavigationRegion2D" unique_id=52134438 instance=ExtResource("1_yi0ob")]
+position = Vector2(784, 147)
+
+[node name="Wall3" parent="NavigationRegion2D" unique_id=1880511619 instance=ExtResource("1_yi0ob")]
+position = Vector2(90, 102)
+
+[node name="Wall4" parent="NavigationRegion2D" unique_id=1201372857 instance=ExtResource("1_yi0ob")]
+position = Vector2(69, 496)
+
+[node name="Wall5" parent="NavigationRegion2D" unique_id=120605184 instance=ExtResource("1_yi0ob")]
+position = Vector2(1049, 533)
+
+[node name="Wall6" parent="NavigationRegion2D" unique_id=1825921270 instance=ExtResource("1_yi0ob")]
+position = Vector2(1047, 342)
+
+[node name="Wall7" parent="NavigationRegion2D" unique_id=1107240450 instance=ExtResource("1_yi0ob")]
+position = Vector2(1049, 133)
+
+[node name="Wall2" parent="NavigationRegion2D" unique_id=171124679 instance=ExtResource("1_yi0ob")]
+position = Vector2(73, 292)
 
 [node name="Player2" parent="." unique_id=1947319577 instance=ExtResource("2_0iw4j")]
 position = Vector2(293, 318)
 controls = ExtResource("3_5o22e")
 player_num = 2
+
+[node name="EnemySpawner" parent="." unique_id=755616621 instance=ExtResource("4_ofpeo")]

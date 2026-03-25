@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var nav_agent = $NavigationAgent2D
 @onready var stats = $Stats
-@onready var player = get_tree().get_first_node_in_group("player")
 
 const ACCELERATION = 260
 const MAX_SPEED = 30
@@ -14,9 +13,16 @@ enum {
 	CHASE
 }
 
+var player = null
 var state = CHASE
 var move_speed = MAX_SPEED
 var tick_damage = false
+
+func _ready():
+	for child in get_parent().get_children():
+		if child.is_in_group("player"):
+			player = child
+			break
 
 func _physics_process(delta):
 	move_speed = move_toward_int(move_speed, 0, FRICTION * delta)

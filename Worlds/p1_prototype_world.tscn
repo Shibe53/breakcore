@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://t3ynv6ighfep"]
 
 [ext_resource type="PackedScene" uid="uid://b85uwpyfx4ffy" path="res://Environment/wall.tscn" id="1_ob0vl"]
-[ext_resource type="Texture2D" uid="uid://bsu1l8x1obxs1" path="res://bg.png" id="1_srx6f"]
 [ext_resource type="PackedScene" uid="uid://1cqb51r3rqik" path="res://Player/player.tscn" id="2_wt2hc"]
 [ext_resource type="Resource" uid="uid://gc0n48l0nrd" path="res://Player/p1_controls.tres" id="3_0y6st"]
 [ext_resource type="PackedScene" uid="uid://cte1jbj5gjb40" path="res://Enemies/enemy_spawner.tscn" id="4_wbr24"]
@@ -14,28 +13,38 @@ agent_radius = 30.0
 
 [node name="P1PrototypeWorld" type="Node2D" unique_id=1614988977]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=553784829]
-position = Vector2(671.00006, 373)
-scale = Vector2(5.5633335, 7.075)
-texture = ExtResource("1_srx6f")
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1562333166]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_wbr24")
 
 [node name="Wall" parent="NavigationRegion2D" unique_id=1438444192 instance=ExtResource("1_ob0vl")]
-position = Vector2(971, 483)
+position = Vector2(988, 61)
 
 [node name="Wall2" parent="NavigationRegion2D" unique_id=847275707 instance=ExtResource("1_ob0vl")]
-position = Vector2(172, 186)
+position = Vector2(225, 120)
+
+[node name="Wall8" parent="NavigationRegion2D" unique_id=344205856 instance=ExtResource("1_ob0vl")]
+position = Vector2(1008, 335)
+
+[node name="Wall9" parent="NavigationRegion2D" unique_id=12693600 instance=ExtResource("1_ob0vl")]
+position = Vector2(884, 529)
+
+[node name="Wall3" parent="NavigationRegion2D" unique_id=376691808 instance=ExtResource("1_ob0vl")]
+position = Vector2(714, -9)
+
+[node name="Wall4" parent="NavigationRegion2D" unique_id=1711743208 instance=ExtResource("1_ob0vl")]
+position = Vector2(632, 562)
+
+[node name="Wall5" parent="NavigationRegion2D" unique_id=1177831704 instance=ExtResource("1_ob0vl")]
+position = Vector2(361, 551)
+
+[node name="Wall6" parent="NavigationRegion2D" unique_id=493505619 instance=ExtResource("1_ob0vl")]
+position = Vector2(457, -4)
+
+[node name="Wall7" parent="NavigationRegion2D" unique_id=1409928867 instance=ExtResource("1_ob0vl")]
+position = Vector2(219, 368)
 
 [node name="Player1" parent="." unique_id=2126001402 instance=ExtResource("2_wt2hc")]
 position = Vector2(628, 252)
 controls = ExtResource("3_0y6st")
 
 [node name="EnemySpawner" parent="." unique_id=340988123 instance=ExtResource("4_wbr24")]
-
-[node name="Timer" parent="EnemySpawner" index="0" unique_id=518227946]
-wait_time = 1.5
-
-[editable path="EnemySpawner"]
