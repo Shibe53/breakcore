@@ -14,6 +14,9 @@ extends Control
 		remote_transform = RemoteTransform2D.new()
 	},
 ]
+@onready var shader = $ColorRect
+@onready var p1_world = %P1World
+@onready var p2_world = %P2World
 
 func _ready() -> void:
 	for info in players:
@@ -28,6 +31,7 @@ func _on_switch_signal():
 	var p1_world = p1.get_parent()
 	var p1_remote_tf_path = players[0].remote_transform.remote_path
 	
+	shader.move = true
 	p1.position = p2.position
 	players[0].remote_transform.remote_path = players[1].remote_transform.remote_path
 	p1.reparent(p2.get_parent())
