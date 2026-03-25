@@ -26,9 +26,6 @@ const P2_KEYS = [
 	KEY_N, KEY_M,
 ]
 
-func _ready() -> void:
-	on_activate()
-
 func randomise_keys() -> Array[Key]:
 	var new_arr = recipie.duplicate(true)
 	for i in range(recipie.size()):
@@ -40,7 +37,7 @@ func randomise_keys() -> Array[Key]:
 	return new_arr
 
 func _input(event: InputEvent) -> void:
-	#if not active: return
+	if not active: return
 	
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == active_recipie[current_index]:
