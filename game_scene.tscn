@@ -8,13 +8,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6e45b"]
 shader = ExtResource("5_kdryc")
-shader_parameter/sweepWidth = 0.0
-shader_parameter/sweepTime = 0.0
-shader_parameter/redTime = 0.0
 shader_parameter/tearIntensity = 0.18
 shader_parameter/tearFrequency = 0.33
+shader_parameter/bandWidth = 0.067
 
+<<<<<<< Updated upstream
 [node name="GameScene" type="Control" unique_id=1470812902]
+=======
+[node name="GameScene" type="Control" unique_id=708649323]
+>>>>>>> Stashed changes
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +25,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v1wow")
 
+<<<<<<< Updated upstream
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=86320296]
+=======
+[node name="The Switcherrr" parent="." unique_id=1709131264 instance=ExtResource("2_mixcd")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=22807293]
+>>>>>>> Stashed changes
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,17 +40,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
+<<<<<<< Updated upstream
 [node name="LeftViewportContainer" type="SubViewportContainer" parent="HBoxContainer" unique_id=1057406910]
+=======
+[node name="LeftViewportContainer" type="SubViewportContainer" parent="HBoxContainer" unique_id=425412716]
+>>>>>>> Stashed changes
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
+<<<<<<< Updated upstream
 [node name="LeftSubViewport" type="SubViewport" parent="HBoxContainer/LeftViewportContainer" unique_id=1250737323]
+=======
+[node name="LeftSubViewport" type="SubViewport" parent="HBoxContainer/LeftViewportContainer" unique_id=1067472532]
+>>>>>>> Stashed changes
 unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(573, 648)
 render_target_update_mode = 4
 
+<<<<<<< Updated upstream
 [node name="LeftCamera" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" unique_id=771896684]
 unique_name_in_owner = true
 
@@ -54,16 +71,34 @@ custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="RightViewportContainer2" type="SubViewportContainer" parent="HBoxContainer" unique_id=254097422]
+=======
+[node name="LeftCamera" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" unique_id=1477144074]
+unique_name_in_owner = true
+
+[node name="P1World" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" unique_id=408741975 instance=ExtResource("1_mlf6e")]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=1212892675]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="RightViewportContainer2" type="SubViewportContainer" parent="HBoxContainer" unique_id=2064982017]
+>>>>>>> Stashed changes
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
+<<<<<<< Updated upstream
 [node name="RightSubViewport" type="SubViewport" parent="HBoxContainer/RightViewportContainer2" unique_id=1337033315]
+=======
+[node name="RightSubViewport" type="SubViewport" parent="HBoxContainer/RightViewportContainer2" unique_id=764031107]
+>>>>>>> Stashed changes
 unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(574, 648)
 render_target_update_mode = 4
 
+<<<<<<< Updated upstream
 [node name="RightCamera" type="Camera2D" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=784537843]
 unique_name_in_owner = true
 position = Vector2(-8, 0)
@@ -72,6 +107,16 @@ position = Vector2(-8, 0)
 unique_name_in_owner = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=60926229]
+=======
+[node name="RightCamera" type="Camera2D" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=515080982]
+unique_name_in_owner = true
+position = Vector2(-8, 0)
+
+[node name="P2World" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=942290298 instance=ExtResource("2_po0ka")]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2056541334]
+>>>>>>> Stashed changes
 layout_mode = 0
 offset_left = -101.0
 offset_right = -3.0
@@ -80,16 +125,26 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("4_mj2jn")
 SPEED = 8000
 
+<<<<<<< Updated upstream
 [node name="ShaderRect" type="ColorRect" parent="ColorRect" unique_id=1830753113]
+=======
+[node name="ShaderRect" type="ColorRect" parent="ColorRect" unique_id=870980296]
+>>>>>>> Stashed changes
 material = SubResource("ShaderMaterial_6e45b")
 layout_mode = 0
 offset_left = -4200.0
 offset_top = -19.0
 offset_bottom = 678.0
 
+<<<<<<< Updated upstream
 [node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=1969178000]
+=======
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=936740475]
+>>>>>>> Stashed changes
 layout_mode = 0
 offset_left = -4300.0
 offset_right = -4200.0
 offset_bottom = 650.0
 color = Color(0, 0, 0, 1)
+
+[connection signal="switch_success" from="The Switcherrr" to="." method="_on_switch_signal"]
