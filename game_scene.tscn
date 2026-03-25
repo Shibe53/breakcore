@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dltkwbtmm2vvu" path="res://Utils/the_switcherrr.tscn" id="2_mixcd"]
 [ext_resource type="PackedScene" uid="uid://c2c4i4s1udd6h" path="res://Worlds/p2_prototype_world.tscn" id="2_po0ka"]
 [ext_resource type="Script" uid="uid://da1qn4ohm2cvo" path="res://Utils/shmove-the-filter.gd" id="4_mj2jn"]
+[ext_resource type="Script" path="res://Utils/popup_text.gd" id="5_6e45b"]
 [ext_resource type="Shader" uid="uid://dkvlkw0sp02pu" path="res://Assets/Shaders/king-crimson.gdshader" id="5_kdryc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6e45b"]
@@ -13,7 +14,7 @@ shader_parameter/tearIntensity = 0.18
 shader_parameter/tearFrequency = 0.33
 shader_parameter/bandWidth = 0.067
 
-[node name="GameScene" type="Control" unique_id=1194877139]
+[node name="GameScene" type="Control" unique_id=1126256936]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +25,7 @@ script = ExtResource("1_v1wow")
 
 [node name="The Switcherrr" parent="." unique_id=1709131264 instance=ExtResource("2_mixcd")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=729529847]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1497794242]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,46 +34,81 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="LeftViewportContainer" type="SubViewportContainer" parent="HBoxContainer" unique_id=1723581920]
+[node name="LeftViewportContainer" type="SubViewportContainer" parent="HBoxContainer" unique_id=1513408953]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="LeftSubViewport" type="SubViewport" parent="HBoxContainer/LeftViewportContainer" unique_id=1886652352]
+[node name="LeftSubViewport" type="SubViewport" parent="HBoxContainer/LeftViewportContainer" unique_id=2019468079]
 unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(573, 648)
 render_target_update_mode = 4
 
-[node name="LeftCamera" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" unique_id=907620697]
+[node name="LeftCamera" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" unique_id=605826692]
 unique_name_in_owner = true
 
-[node name="P1World" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" unique_id=347686015 instance=ExtResource("1_mlf6e")]
+[node name="P1World" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" unique_id=1984775300 instance=ExtResource("1_mlf6e")]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=1531923208]
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=415131098]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
-[node name="RightViewportContainer2" type="SubViewportContainer" parent="HBoxContainer" unique_id=1648622374]
+[node name="RightViewportContainer2" type="SubViewportContainer" parent="HBoxContainer" unique_id=1236527385]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="RightSubViewport" type="SubViewport" parent="HBoxContainer/RightViewportContainer2" unique_id=419662646]
+[node name="RightSubViewport" type="SubViewport" parent="HBoxContainer/RightViewportContainer2" unique_id=1250546790]
 unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(574, 648)
 render_target_update_mode = 4
 
-[node name="RightCamera" type="Camera2D" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=41369525]
+[node name="RightCamera" type="Camera2D" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=1090125538]
 unique_name_in_owner = true
 position = Vector2(-8, 0)
 
-[node name="P2World" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=1587185985 instance=ExtResource("2_po0ka")]
+[node name="P2World" parent="HBoxContainer/RightViewportContainer2/RightSubViewport" unique_id=1064090736 instance=ExtResource("2_po0ka")]
 unique_name_in_owner = true
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=511451853]
+[node name="UIs" type="HBoxContainer" parent="." unique_id=1327861389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P1_UI" type="MarginContainer" parent="UIs" unique_id=572487814]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = 120
+
+[node name="CenterContainer" type="CenterContainer" parent="UIs/P1_UI" unique_id=1574753001]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIs/P1_UI/CenterContainer" unique_id=2115505394]
+visible = false
+layout_mode = 2
+script = ExtResource("5_6e45b")
+
+[node name="P2_UI" type="MarginContainer" parent="UIs" unique_id=1053208568]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = 120
+
+[node name="CenterContainer" type="CenterContainer" parent="UIs/P2_UI" unique_id=1967201959]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIs/P2_UI/CenterContainer" unique_id=1022669741]
+visible = false
+layout_mode = 2
+script = ExtResource("5_6e45b")
+player_num = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1036765529]
 layout_mode = 0
 offset_left = -101.0
 offset_right = -3.0
@@ -81,20 +117,26 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("4_mj2jn")
 SPEED = 8000
 
-[node name="ShaderRect" type="ColorRect" parent="ColorRect" unique_id=1072550353]
+[node name="ShaderRect" type="ColorRect" parent="ColorRect" unique_id=2146666713]
 material = SubResource("ShaderMaterial_6e45b")
 layout_mode = 0
 offset_left = -4200.0
 offset_top = -19.0
 offset_bottom = 678.0
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=1126679098]
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=258301345]
 layout_mode = 0
 offset_left = -4300.0
 offset_right = -4200.0
 offset_bottom = 650.0
 color = Color(0, 0, 0, 1)
 
+[connection signal="qte_successful_keypress" from="The Switcherrr" to="UIs/P1_UI/CenterContainer/Label" method="_on_the_switcherrr_qte_successful_keypress"]
+[connection signal="qte_successful_keypress" from="The Switcherrr" to="UIs/P2_UI/CenterContainer/Label" method="_on_the_switcherrr_qte_successful_keypress"]
+[connection signal="switch_failure" from="The Switcherrr" to="UIs/P1_UI/CenterContainer/Label" method="_on_the_switcherrr_switch_failure"]
+[connection signal="switch_failure" from="The Switcherrr" to="UIs/P2_UI/CenterContainer/Label" method="_on_the_switcherrr_switch_failure"]
+[connection signal="switch_started" from="The Switcherrr" to="UIs/P1_UI/CenterContainer/Label" method="_on_the_switcherrr_switch_started"]
+[connection signal="switch_started" from="The Switcherrr" to="UIs/P2_UI/CenterContainer/Label" method="_on_the_switcherrr_switch_started"]
 [connection signal="switch_success" from="The Switcherrr" to="." method="_on_switch_signal"]
-
-[connection signal="switch_success" from="The Switcherrr" to="." method="_on_switch_signal"]
+[connection signal="switch_success" from="The Switcherrr" to="UIs/P1_UI/CenterContainer/Label" method="_on_the_switcherrr_switch_success"]
+[connection signal="switch_success" from="The Switcherrr" to="UIs/P2_UI/CenterContainer/Label" method="_on_the_switcherrr_switch_success"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://p0ar1o1coxjn"]
+
+[ext_resource type="Script" uid="uid://d1pde5kte5wyc" path="res://Utils/Cooldown.gd" id="1_l74my"]
+
+[node name="Cooldown" type="Timer" unique_id=300308072]
+script = ExtResource("1_l74my")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

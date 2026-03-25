@@ -47,11 +47,8 @@ func _input(event: InputEvent) -> void:
 				success.emit(self)
 				deactivate()
 	
-func recipie_to_string(arr_of_keys: Array[Key]) -> Array:
-	var arr = []
-	for key in arr_of_keys:
-		arr.append(OS.get_keycode_string(key))
-	return arr
+func active_recipie_to_string() -> String:
+	return " ".join(active_recipie.map(func(x): return OS.get_keycode_string(x)))
 	
 func deactivate():
 	active = false
@@ -60,5 +57,4 @@ func deactivate():
 func on_activate():
 	active = true
 	active_recipie = randomise_keys()
-	print("press the keys: {array}".format({"array" : recipie_to_string(active_recipie)}))
 	
