@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cf6aa0trcsd7e" path="res://Utils/the_switcherrr.gd" id="1_jdtqh"]
 [ext_resource type="PackedScene" uid="uid://cs6xnimviu7in" path="res://Utils/qte.tscn" id="2_lf3ak"]
 [ext_resource type="Script" uid="uid://blp2qp0sce231" path="res://Utils/qte.gd" id="3_lf3ak"]
+[ext_resource type="Script" uid="uid://d1pde5kte5wyc" path="res://Utils/Cooldown.gd" id="4_su7fj"]
 
 [node name="The Switcherrr" type="Node" unique_id=1709131264]
 script = ExtResource("1_jdtqh")
@@ -16,6 +17,12 @@ script = ExtResource("3_lf3ak")
 recipie = Array[int]([4194305])
 player_num = 1
 metadata/_custom_type_script = "uid://blp2qp0sce231"
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1191703593]
+wait_time = 5.0
+one_shot = true
+script = ExtResource("4_su7fj")
+metadata/_custom_type_script = "uid://d1pde5kte5wyc"
 
 [connection signal="success" from="QTE1" to="." method="_on_qte_success"]
 [connection signal="successful_key" from="QTE1" to="." method="_on_qte_successful_key"]
