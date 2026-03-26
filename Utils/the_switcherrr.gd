@@ -32,7 +32,7 @@ func _on_qte_success(qte: QTE) -> void:
 	if success_p1 and success_p2:
 		switch_success.emit()
 		success_p1 = false
-		success_p2 = false	
+		success_p2 = false
 		qte_1.deactivate()
 		qte_2.deactivate()
 	else:

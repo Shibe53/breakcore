@@ -26,7 +26,6 @@ func _ready() -> void:
 func _on_switch_signal():
 	var p1 = players[0].player
 	var p2 = players[1].player
-	
 	var p1_pos = p1.position
 	var p1_world = p1.get_parent()
 	var p1_remote_tf_path = players[0].remote_transform.remote_path
@@ -39,3 +38,11 @@ func _on_switch_signal():
 	p2.position = p1_pos
 	players[1].remote_transform.remote_path = p1_remote_tf_path
 	p2.reparent(p1_world)
+	
+	for child in p1_world.get_children():
+		if child is Enemy:
+			child.state = child.RECOMPUTE
+	
+	for child in p2_world.get_children():
+		if child is Enemy:
+			child.state = child.RECOMPUTE

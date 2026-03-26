@@ -1,22 +1,26 @@
 extends CharacterBody2D
+class_name Enemy
 
 @onready var nav_agent = $NavigationAgent2D
 @onready var stats = $Stats
 
 const ACCELERATION = 260
-const MAX_SPEED = 30
+const MAX_SPEED = 40
 const FRICTION = 100
 
 @export var ENEMY_TYPE : String = "Small"
 
 enum {
-	CHASE
+	CHASE,
+	RECOMPUTE
 }
 
 var player = null
 var state = CHASE
 var move_speed = MAX_SPEED
 var tick_damage = false
+var knockback_velocity = Vector2.ZERO
+var knockback_time = 0.0
 
 func _ready():
 	for child in get_parent().get_children():
@@ -25,12 +29,22 @@ func _ready():
 			break
 
 func _physics_process(delta):
+	if knockback_time > 0:
+		knockback_time -= delta
+		
+		velocity = knockback_velocity
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 4000 * delta)
+		
+		move_and_slide()
+		return
+		
 	move_speed = move_toward_int(move_speed, 0, FRICTION * delta)
-	move_and_slide()
 	
 	match state:
 		CHASE:
 			chase_state()
+		RECOMPUTE:
+			recompute_player()
 	
 	move_and_slide()
 
@@ -39,6 +53,13 @@ func chase_state():
 	if player != null:
 		look_at(player.position)
 		update_target_position(player.global_transform.origin)
+
+func recompute_player():
+	for child in get_parent().get_children():
+		if child.is_in_group("player"):
+			player = child
+			break
+	state = CHASE
 
 func _on_stats_no_health() -> void:
 	queue_free()

@@ -50,7 +50,8 @@ func push_away():
 	for body in bodies:
 		if body is CharacterBody2D:
 			var dir = (body.global_position - push.global_position).normalized()
-			body.velocity += dir * 3000
+			body.knockback_velocity = dir * 900.0
+			body.knockback_time = 0.12
 
 func _on_hurtbox_invincibility_ended() -> void:
 	pass

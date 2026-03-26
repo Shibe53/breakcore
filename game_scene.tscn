@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dltkwbtmm2vvu" path="res://Utils/the_switcherrr.tscn" id="2_mixcd"]
 [ext_resource type="PackedScene" uid="uid://c2c4i4s1udd6h" path="res://Worlds/p2_prototype_world.tscn" id="2_po0ka"]
 [ext_resource type="Script" uid="uid://da1qn4ohm2cvo" path="res://Utils/shmove-the-filter.gd" id="4_mj2jn"]
-[ext_resource type="Script" path="res://Utils/popup_text.gd" id="5_6e45b"]
+[ext_resource type="Script" uid="uid://4vywlyk4ov5d" path="res://Utils/popup_text.gd" id="5_6e45b"]
 [ext_resource type="Shader" uid="uid://dkvlkw0sp02pu" path="res://Assets/Shaders/king-crimson.gdshader" id="5_kdryc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6e45b"]
